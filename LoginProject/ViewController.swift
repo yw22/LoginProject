@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         return view
     }()
     
-    // "이메일 또는 전화번호" 안내문구
+    // MARK: "이메일 또는 전화번호" 안내문구
     private var emailInfoLabel: UILabel = {
         let label = UILabel()
         label.text = "이메일주소 또는 전화번호"
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         return label
     }()
     
-    // 로그인 - 이메일 입력 필드
+    // MARK: 로그인 - 이메일 입력 필드
     private lazy var emailTextField: UITextField = {
         var tf = UITextField()
         tf.frame.size.height = 48
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     }()
     
     
-    // Mark: - 비밀번호 입력하는 텍스트 뷰
+    // MARK: - 비밀번호 입력하는 텍스트 뷰
     private lazy var passwordTextFieldView: UIView = {
         let view = UIView()
         view.frame.size.height = 48
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         return view
     }()
     
-    // 패스워드 텍스트필드의 안내문구
+    // MARK: 패스워드 텍스트필드의 안내문구
     private var passwordInfoLabel: UILabel = {
         let label = UILabel()
         label.text = "비밀번호"
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         return label
     }()
     
-    // 로그인 - 비밀번호 입력 필드
+    // MARK: 로그인 - 비밀번호 입력 필드
     private let passwordTextField: UITextField = {
         var tf = UITextField()
         tf.backgroundColor = .darkGray
@@ -94,7 +94,7 @@ class ViewController: UIViewController {
         return button
     }()
     
-    // Mark: - 로그인 버튼
+    // MARK: - 로그인 버튼
     private let loginButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
@@ -117,13 +117,13 @@ class ViewController: UIViewController {
         return st
     }()
     
-    // 비밀번호 재설정 버튼
+    // MARK: 비밀번호 재설정 버튼
     private let passwordResetButton: UIButton = {
        let button = UIButton()
         button.backgroundColor = .clear
         button.setTitle("비밀번호 재설정", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        
+        button.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -196,6 +196,27 @@ class ViewController: UIViewController {
             passwordResetButton.heightAnchor.constraint(equalToConstant: textViewHeight)
             
         ])
+        
+    }
+    
+    
+    @objc func resetButtonTapped() {
+//        print("리셋버튼이 눌렸습니다")
+        
+        let alert = UIAlertController(title: "비밀번호 바꾸기", message: "비밀번호를 바꾸시겠습니까?", preferredStyle: .alert)
+        
+        let success = UIAlertAction(title: "확인", style: .default) { action in
+            print("확인버튼이 눌렸습니다.")
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel) { cancel in
+            print("취소버튼이 눌렸습니다.")
+        }
+        
+        alert.addAction(success)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
         
     }
 }
