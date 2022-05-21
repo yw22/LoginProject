@@ -52,4 +52,4 @@
 ---
 
 ## **구현 영상** -->
-<img width="30%" src="https://user-images.githubusercontent.com/100309352/169657264-a8d7c0e1-15c4-416b-b11a-e810b16c5b63.gif"/>  
+<img width="50%" src="https://user-images.githubusercontent.com/100309352/169657264-a8d7c0e1-15c4-416b-b11a-e810b16c5b63.gif"/>  
