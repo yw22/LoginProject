@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     // MARK: - 이메일 입력하는 텍스트 뷰
     private lazy var emailTextFieldView: UIView = {
@@ -106,6 +106,7 @@ class ViewController: UIViewController {
         button.setTitle("로그인", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -136,6 +137,8 @@ class ViewController: UIViewController {
     lazy var passwordInfoLabelCenterYConstraint = passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor)
     
     
+    
+    // MARK: viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -143,7 +146,7 @@ class ViewController: UIViewController {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
+
     }
     
     
@@ -206,9 +209,10 @@ class ViewController: UIViewController {
     @objc func passwordSecureModeSetting() {
         print("표시 버튼이 눌렸습니다.")
         passwordTextField.isSecureTextEntry.toggle()
-        
-        
-        
+    }
+    
+    @objc func loginButtonTapped() {
+        print("로그인 버튼이 눌렀습니다.")
     }
     
     
@@ -231,7 +235,10 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         
     }
-
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
 
